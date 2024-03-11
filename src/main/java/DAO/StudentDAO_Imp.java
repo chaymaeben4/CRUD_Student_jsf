@@ -15,7 +15,7 @@ public class StudentDAO_Imp implements StudentDAO {
         List<Student> list = new ArrayList<>();
         try (Connection conn = db.getConnection()) {
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM student");
+            ResultSet rs = statement.executeQuery("SELECT * FROM Student");
             while (rs.next()) {
                 Student s = new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"));
                 list.add(s);
@@ -27,7 +27,7 @@ public class StudentDAO_Imp implements StudentDAO {
     }
     public void saveStudent(Student student){
         try (Connection connection = db.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO student" + "  (nom, prenom, email) VALUES "
+             PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO Student" + "  (nom, prenom, email) VALUES "
                      + " (?, ?, ?);")) {
             preparedStatement.setString(1, student.getNom());
             preparedStatement.setString(2, student.getPrenom());
