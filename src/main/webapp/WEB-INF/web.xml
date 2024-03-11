@@ -14,4 +14,5 @@
     <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
 
+  
 </web-app>
