@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <h:outputStylesheet library="webjars" name="bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <f:loadBundle basename="messages" var="msg" />
+</h:head>
+
+<h:body>
+    <div class="container mt-3">
+        <h2>#{msg.title}</h2>
+        <h:form>
+            <h:selectOneMenu value="#{language.selectedLocale}" styleClass="menu" >
+                <f:selectItem itemValue="en" itemLabel="English" />
+                <f:selectItem itemValue="fr" itemLabel="Français" />
+                <f:ajax render="@all" listener="#{language.changeLocale()}"  />
+            </h:selectOneMenu>
+        </h:form>
+        <h:form>
+        <h:dataTable value="#{studentBean.visibleStudents}" var="student" styleClass="table" headerClass="table-dark " rowClasses="table-secondary , table-light">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{student.id}
+
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{msg.student_name}</f:facet>
+                <h:inputText value="#{student.nom}" rendered="#{student.editMode}"/>
+                <h:outputText value="#{student.nom}" rendered="#{not student.editMode}" />
+
+
+                <!--footer qui permet d'ajouter une ligne a la table-->
+                <f:facet name="footer">
+                    <h:inputText binding="#{studentBean.inputNom}" value="#{studentBean.studentAdd.nom}" rendered="#{studentBean.showAddStudentForm}"></h:inputText>
+                </f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{msg.student_surname}</f:facet>
+                <h:inputText value="#{student.prenom}" rendered="#{student.editMode}" />
+                <h:outputText value="#{student.prenom}" rendered="#{not student.editMode}" />
+
+
+                <!--footer qui permet d'ajouter une ligne a la table-->
+                <f:facet name="footer">
+                    <h:inputText binding="#{studentBean.inputPrenom}" value="#{studentBean.studentAdd.prenom}" rendered="#{studentBean.showAddStudentForm}">
+                    </h:inputText>
+                </f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{msg.student_email}</f:facet>
+                <h:inputText value="#{student.email}" rendered="#{student.editMode}" />
+                <h:outputText value="#{student.email}" rendered="#{not student.editMode}" />
+
+
+                <!--footer qui permet d'ajouter une ligne a la table-->
+                <f:facet name="footer">
+                    <h:inputText binding="#{studentBean.inputEmail}" id="inputEmail" value="#{studentBean.studentAdd.email}" rendered="#{studentBean.showAddStudentForm}" validator="#{studentBean.validateEmail}">
+                    </h:inputText>
+                    <h:message for="inputEmail" style="color: red"/>
+                </f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{msg.student_actions}</f:facet>
+                <!-- Edit action button-->
+                <div class="btn btn-group">
+                    <h:commandButton type="submit" class="btn btn-primary" value="#{msg.student_edit}" action="#{studentBean.toggleEditMode()}">
+                        <f:setPropertyActionListener target="#{studentBean.studentEdit}" value="#{student}" />
+                    </h:commandButton>
+                </div>
+                <!-- Save Changes button-->
+                <div class="btn-group" >
+                    <h:commandButton type="submit" class="btn btn-success" value="#{msg.student_saveChanges}"
+                                     action="#{studentBean.saveChanges}" rendered="#{student.editMode}">
+                    </h:commandButton>
+                </div>
+
+                <!-- delete button-->
+                <div class="btn btn-group">
+                <h:commandButton action="#{studentBean.deleteStudent()}" styleClass="btn btn-danger" value="#{msg.student_delete}" >
+                    <f:setPropertyActionListener target="#{studentBean.studentIdToDelete}" value="#{student.id}" />
+                </h:commandButton>
+                </div>
+                <!-- Save button-->
+                <f:facet name="footer">
+                    <h:commandButton value="#{msg.student_save}" action="#{studentBean.saveStudent()}" styleClass="btn btn-success" rendered="#{studentBean.showAddStudentForm}"> </h:commandButton>
+                </f:facet>
+            </h:column>
+        </h:dataTable>
+            <div  style="display: flex; justify-content: center; align-items: center; ">
+            <h:commandLink  action="#{studentBean.previousPage()}"  style="margin-right: 10px;" ><i class="fa-solid fa-arrow-left"></i></h:commandLink>
+            <h:commandLink  action="#{studentBean.nextPage()}"><i class="fa-solid fa-arrow-right"></i></h:commandLink>
+            </div>
+            <div>
+            <h:commandButton value="#{msg.student_addStudent}" action="#{studentBean.addStudent()}" styleClass="btn btn-success" />
+            </div>
+           </h:form>
+    </div>
+</h:body>
+</html>

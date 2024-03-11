@@ -1,0 +1,211 @@
+Index: src/main/java/util/DatabaseConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package util;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n\r\npublic class DatabaseConfig {\r\n    public DatabaseConfig(){\r\n\r\n    }\r\n    public Connection getConnection() {\r\n        Connection conn = null;\r\n        try {\r\n            //charger le pilote\r\n            Class.forName(\"com.mysql.cj.jdbc.Driver\");\r\n            conn = DriverManager.getConnection(\"jdbc:mysql://127.0.0.1:3306/crud\", \"root\", \"Chben97531@@\");\r\n            System.out.println(\"connected\");\r\n        } catch (SQLException | ClassNotFoundException e) {\r\n            e.printStackTrace();\r\n            System.err.println(\"Erreur lors de la connexion à la base de données : \" + e.getMessage());\r\n        }\r\n        return conn;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/util/DatabaseConfig.java b/src/main/java/util/DatabaseConfig.java
+--- a/src/main/java/util/DatabaseConfig.java	(revision 3d6d392ef413dc3f15bb5da628ba0246736ca4b3)
++++ b/src/main/java/util/DatabaseConfig.java	(date 1710072558924)
+@@ -13,8 +13,10 @@
+         try {
+             //charger le pilote
+             Class.forName("com.mysql.cj.jdbc.Driver");
++
++//            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/crud", "root", "87467942");
++
+             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/crud", "root", "Chben97531@@");
+-            System.out.println("connected");
+         } catch (SQLException | ClassNotFoundException e) {
+             e.printStackTrace();
+             System.err.println("Erreur lors de la connexion à la base de données : " + e.getMessage());
+Index: src/main/webapp/students.xhtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\r\n        \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\"\r\n      xmlns:h=\"http://xmlns.jcp.org/jsf/html\" xmlns:f=\"http://java.sun.com/jsf/core\" xmlns:ui=\"http://xmlns.jcp.org/jsf/facelets\">\r\n\r\n<h:head>\r\n    <h:outputStylesheet library=\"webjars\" name=\"bootstrap/5.3.3/css/bootstrap.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\" />\r\n</h:head>\r\n\r\n\r\n<h:body>\r\n    <div class=\"container mt-3\">\r\n        <h2>Liste des étudiants</h2>\r\n\r\n        <h:dataTable value=\"#{studentBean.students}\" var=\"student\" styleClass=\"table\"\r\n        headerClass=\"table-dark \" rowClasses=\"table-secondary , table-light\">\r\n            <h:column>\r\n                <f:facet name=\"header\">ID</f:facet>\r\n                #{student.id}\r\n            </h:column>\r\n            <h:column>\r\n                <f:facet name=\"header\">Nom</f:facet>\r\n                #{student.nom}\r\n            </h:column>\r\n            <h:column>\r\n                <f:facet name=\"header\">Prénom</f:facet>\r\n                #{student.prenom}\r\n            </h:column>\r\n            <h:column>\r\n                <f:facet name=\"header\">Email</f:facet>\r\n                #{student.email}\r\n            </h:column>\r\n            <h:column>\r\n                <f:facet name=\"header\">Actions</f:facet>\r\n                <div class=\"btn-group\" >\r\n                    <button type=\"button\" class=\"btn btn-primary\"><i class=\"fas fa-edit\"></i></button>\r\n                </div>\r\n                <div class=\"btn-group\" >\r\n                    <button type=\"button\" class=\"btn btn-danger\"><i class=\"fas fa-trash-alt\"></i></button>\r\n                </div>\r\n            </h:column>\r\n        </h:dataTable>\r\n\r\n        <div class=\"d-flex justify-content-end mt-3\">\r\n            <button type=\"button\" class=\"btn btn-success\">Ajouter un étudiant</button>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</h:body>\r\n\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/students.xhtml b/src/main/webapp/students.xhtml
+--- a/src/main/webapp/students.xhtml	(revision 3d6d392ef413dc3f15bb5da628ba0246736ca4b3)
++++ b/src/main/webapp/students.xhtml	(date 1710072621632)
+@@ -44,7 +44,6 @@
+ 
+         <div class="d-flex justify-content-end mt-3">
+             <button type="button" class="btn btn-success">Ajouter un étudiant</button>
+-
+         </div>
+     </div>
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Crud_jsf:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f8d9b622-21a8-4310-a955-f5995248ba88\" name=\"Changes\" comment=\"commit1\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"jsf\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"false\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"false\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2dNN2f3atOLtTSOfWNySogCv6sy\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/hp/Desktop/my studies/GI2/S2/Conference/conference_final/conference\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"mysql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\hp\\Desktop\\my studies\\GI2\\S2\\JEE\\Crud_jsf\\src\\main\\webapp\\WEB-INF\" />\r\n      <recent name=\"C:\\Users\\hp\\Desktop\\my studies\\GI2\\S2\\JEE\\Crud_jsf\\src\\main\\java\" />\r\n      <recent name=\"C:\\Users\\hp\\Desktop\\my studies\\GI2\\S2\\JEE\\Crud_jsf\\src\\main\\webapp\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 10.1.18\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.1.18\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"Crud_jsf:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/Crud_jsf_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"a71cc25a-c7f1-4e48-a024-218b372f6913\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"55027\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Crud_jsf:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f8d9b622-21a8-4310-a955-f5995248ba88\" name=\"Changes\" comment=\"\" />\r\n      <created>1709844373068</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1709844373068</updated>\r\n      <workItem from=\"1709844374639\" duration=\"8625000\" />\r\n      <workItem from=\"1709887538850\" duration=\"3482000\" />\r\n      <workItem from=\"1709894388718\" duration=\"4433000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1709896943269</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709896943269</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit1\">\r\n      <created>1709898703698</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709898703698</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit1\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit1\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3d6d392ef413dc3f15bb5da628ba0246736ca4b3)
++++ b/.idea/workspace.xml	(date 1710072559124)
+@@ -9,28 +9,21 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f8d9b622-21a8-4310-a955-f5995248ba88" name="Changes" comment="commit1" />
++    <list default="true" id="6b2a8277-51f5-4c0b-b524-d701dc267d00" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/StudentDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/StudentDAO_Imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/StudentDAO_Imp.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Modele/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modele/Student.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/service/StudentBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/StudentBean.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/util/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/DatabaseConfig.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/students.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/students.xhtml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="jsf" />
+-        <option value="Class" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-      <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
+-      </map>
+-    </option>
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+   <component name="LogFilters">
+     <option name="FILTER_ERRORS" value="false" />
+     <option name="FILTER_WARNINGS" value="false" />
+@@ -38,64 +31,16 @@
+     <option name="FILTER_DEBUG" value="false" />
+     <option name="CUSTOM_FILTER" />
+   </component>
+-  <component name="MarkdownSettingsMigration">
+-    <option name="stateVersion" value="1" />
+-  </component>
+-  <component name="MavenImportPreferences">
+-    <option name="importingSettings">
+-      <MavenImportingSettings>
+-        <option name="workspaceImportEnabled" value="true" />
+-      </MavenImportingSettings>
+-    </option>
+-  </component>
+-  <component name="ProjectId" id="2dNN2f3atOLtTSOfWNySogCv6sy" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+-  </component>
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Users/hp/Desktop/my studies/GI2/S2/Conference/conference_final/conference",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
+-  },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "mysql"
+-    ]
+-  }
+-}]]></component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\hp\Desktop\my studies\GI2\S2\JEE\Crud_jsf\src\main\webapp\WEB-INF" />
+-      <recent name="C:\Users\hp\Desktop\my studies\GI2\S2\JEE\Crud_jsf\src\main\java" />
+-      <recent name="C:\Users\hp\Desktop\my studies\GI2\S2\JEE\Crud_jsf\src\main\webapp" />
+-    </key>
+   </component>
+   <component name="RunManager">
+-    <configuration name="Tomcat 10.1.18" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.18" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
++    <configuration name="Tomcat 10.1.18" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.18" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-17" nameIsGenerated="true">
+       <option name="UPDATING_POLICY" value="restart-server" />
+-      <deployment>
+-        <artifact name="Crud_jsf:war exploded">
+-          <settings>
+-            <option name="CONTEXT_PATH" value="/Crud_jsf_war_exploded" />
+-          </settings>
+-        </artifact>
+-      </deployment>
++      <deployment />
+       <server-settings>
+-        <option name="BASE_DIRECTORY_NAME" value="a71cc25a-c7f1-4e48-a024-218b372f6913" />
++        <option name="BASE_DIRECTORY_NAME" value="68aaf24f-35e4-4919-89c6-4052e462950f" />
++        <option name="HTTP_PORT" value="8081" />
+       </server-settings>
+       <predefined_log_file enabled="true" id="Tomcat" />
+       <predefined_log_file enabled="true" id="Tomcat Catalina" />
+@@ -103,7 +48,7 @@
+       <predefined_log_file id="Tomcat Host Manager" />
+       <predefined_log_file id="Tomcat Localhost Access" />
+       <RunnerSettings RunnerId="Debug">
+-        <option name="DEBUG_PORT" value="55027" />
++        <option name="DEBUG_PORT" value="64605" />
+       </RunnerSettings>
+       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+         <option name="USE_ENV_VARIABLES" value="true" />
+@@ -173,42 +118,7 @@
+       </method>
+     </configuration>
+   </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="f8d9b622-21a8-4310-a955-f5995248ba88" name="Changes" comment="" />
+-      <created>1709844373068</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1709844373068</updated>
+-      <workItem from="1709844374639" duration="8625000" />
+-      <workItem from="1709887538850" duration="3482000" />
+-      <workItem from="1709894388718" duration="4433000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="commit">
+-      <created>1709896943269</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1709896943269</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="commit1">
+-      <created>1709898703698</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1709898703698</updated>
+-    </task>
+-    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="commit" />
+-    <MESSAGE value="commit1" />
+-    <option name="LAST_COMMIT_MESSAGE" value="commit1" />
+-  </component>
+ </project>
+\ No newline at end of file
