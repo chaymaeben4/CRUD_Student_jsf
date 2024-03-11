@@ -11,7 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f8d9b622-21a8-4310-a955-f5995248ba88" name="Changes" comment="commit1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Crud_jsf/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/Crud_jsf/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/classes/DAO/StudentDAO_Imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/classes/DAO/StudentDAO_Imp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/classes/util/DatabaseConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/classes/util/DatabaseConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Crud_jsf/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/StudentDAO_Imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/StudentDAO_Imp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/DatabaseConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/DatabaseConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +209,7 @@
       <workItem from="1710074904848" duration="17139000" />
       <workItem from="1710104348011" duration="840000" />
       <workItem from="1710106862913" duration="2840000" />
-      <workItem from="1710158977628" duration="1684000" />
+      <workItem from="1710158977628" duration="2897000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1709896943269</created>
