@@ -40,7 +40,7 @@ public class StudentDAO_Imp implements StudentDAO {
     public boolean deleteStudent(int id){
         boolean statut=false;
         try(Connection connection = db.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement("delete from student where id = ?;")){
+            PreparedStatement preparedStatement=connection.prepareStatement("delete from Student where id = ?;")){
             preparedStatement.setInt(1,id);
             statut=preparedStatement.executeUpdate() >0;
         }
@@ -53,7 +53,7 @@ public class StudentDAO_Imp implements StudentDAO {
 
     public void update(Student student){
         try(Connection connection=db.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement("update student set nom = ?,prenom= ?, email =? where id = ?;")){
+            PreparedStatement preparedStatement=connection.prepareStatement("update Student set nom = ?,prenom= ?, email =? where id = ?;")){
             preparedStatement.setString(1,student.getNom());
             preparedStatement.setString(2,student.getPrenom());
             preparedStatement.setString(3,student.getEmail());
